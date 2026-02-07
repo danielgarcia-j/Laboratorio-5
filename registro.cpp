@@ -1,6 +1,3 @@
- feature/mostrar-estudiantes
-
-
 #include <iostream>
 
 using namespace std;
@@ -45,7 +42,6 @@ Estudiante* insertar(Estudiante* raiz, int carnet, char nombre[], float nota) {
     return raiz;
 }
 
- feature/mostrar-estudia
 void mostrarEstudiantes(Estudiante* raiz) {
     if (raiz != NULL) {
         mostrarEstudiantes(raiz->izquierdo);
@@ -55,6 +51,7 @@ void mostrarEstudiantes(Estudiante* raiz) {
         mostrarEstudiantes(raiz->derecho);
     }
 }
+
 void buscarEstudiante(Estudiante* raiz, int carnet) {
     if (raiz == NULL) {
         cout << "Estudiante no encontrado\n";
@@ -71,5 +68,27 @@ void buscarEstudiante(Estudiante* raiz, int carnet) {
         buscarEstudiante(raiz->derecho, carnet);
     }
 }
+
+void mostrarAprobados(Estudiante* raiz) {
+    if (raiz != NULL) {
+        mostrarAprobados(raiz->izquierdo);
+        if (raiz->nota >= 6.0) {
+            cout << raiz->nombre << " - " << raiz->nota << endl;
+        }
+        mostrarAprobados(raiz->derecho);
+    }
+}
+
+void mostrarReprobados(Estudiante* raiz) {
+    if (raiz != NULL) {
+        mostrarReprobados(raiz->izquierdo);
+        if (raiz->nota < 6.0) {
+            cout << raiz->nombre << " - " << raiz->nota << endl;
+        }
+        mostrarReprobados(raiz->derecho);
+    }
+}
+
+
 
  
