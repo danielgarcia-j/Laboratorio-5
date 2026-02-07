@@ -1,3 +1,6 @@
+ feature/mostrar-estudiantes
+
+
 #include <iostream>
 
 using namespace std;
@@ -37,7 +40,20 @@ Estudiante* insertar(Estudiante* raiz, int carnet, char nombre[], float nota) {
     } else if (carnet > raiz->carnet) {
         raiz->derecho = insertar(raiz->derecho, carnet, nombre, nota);
     }
+ develop
 
     return raiz;
 }
 
+ feature/mostrar-estudia
+void mostrarEstudiantes(Estudiante* raiz) {
+    if (raiz != NULL) {
+        mostrarEstudiantes(raiz->izquierdo);
+        cout << "Carnet: " << raiz->carnet
+             << " Nombre: " << raiz->nombre
+             << " Nota: " << raiz->nota << endl;
+        mostrarEstudiantes(raiz->derecho);
+    }
+}
+
+ develop
