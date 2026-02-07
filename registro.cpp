@@ -1,20 +1,12 @@
-void mostrarAprobados(Estudiante* raiz) {
-    if (raiz != NULL) {
-        mostrarAprobados(raiz->izquierdo);
-        if (raiz->nota >= 6.0) {
-            cout << raiz->nombre << " - " << raiz->nota << endl;
-        }
-        mostrarAprobados(raiz->derecho);
-    }
-}
+float calcularPromedio(Estudiante* raiz, int* contador) {
+    if (raiz == NULL) return 0;
 
-void mostrarReprobados(Estudiante* raiz) {
-    if (raiz != NULL) {
-        mostrarReprobados(raiz->izquierdo);
-        if (raiz->nota < 6.0) {
-            cout << raiz->nombre << " - " << raiz->nota << endl;
-        }
-        mostrarReprobados(raiz->derecho);
-    }
+    float suma = raiz->nota;
+    (*contador)++;
+
+    suma += calcularPromedio(raiz->izquierdo, contador);
+    suma += calcularPromedio(raiz->derecho, contador);
+
+    return suma;
 }
 
